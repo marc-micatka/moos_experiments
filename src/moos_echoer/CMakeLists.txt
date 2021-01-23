@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.10.2)
 project(moos_echoer)
 
 # If we were following ROS's conventions, the executable would be
