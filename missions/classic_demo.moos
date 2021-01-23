@@ -6,6 +6,7 @@ ProcessConfig = ANTLER
 {
   MSBetweenLaunches = 200
 
+  Run = pLogger @ NewConsole = true
   Run = MOOSDB @NewConsole = true
   Run = talker_classic @NewConsole = true
   Run = listener_classic @NewConsole = true
@@ -53,4 +54,22 @@ ProcessConfig = uXMS
   var = OUTPUT_Z
 }
 
+ProcessConfig = pLogger
+{
+  AppTick = 20.0
+  CommsTick = 20.0
 
+  File = DockerTest
+  FileTimeStamp = true
+  PATH = /home/moos/docker_test_logs/
+
+  SyncLog = True @ 0.5
+  AsyncLog = True
+
+  Log = TALKER_X
+  Log = TALKER_Y
+  Log = TALKER_Z
+  Log = OUTPUT_X
+  Log = OUTPUT_Y
+  Log = OUTPUT_Z
+}

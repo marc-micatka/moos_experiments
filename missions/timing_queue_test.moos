@@ -9,6 +9,7 @@ ProcessConfig = ANTLER
   # on how far apart the ticks are from each other.
   MSBetweenLaunches = 550
 
+  Run = pLogger @ NewConsole = true
   Run = MOOSDB @NewConsole = true
   Run = source_node @NewConsole = true
   Run = relay_queue_node @NewConsole = true ~ relay1
@@ -74,4 +75,22 @@ ProcessConfig = uXMS
   var = VAR_2
   var = VAR_3
   var = VAR_4
+}
+
+ProcessConfig = pLogger
+{
+  AppTick = 20.0
+  CommsTick = 20.0
+
+  File = DockerTest
+  FileTimeStamp = true
+  PATH = /home/moos/docker_test_logs/
+
+  SyncLog = True @ 0.5
+  AsyncLog = True
+
+  Log = VAR_1
+  Log = VAR_2
+  Log = VAR_3
+  Log = VAR_4
 }
