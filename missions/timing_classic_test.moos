@@ -1,0 +1,77 @@
+ServerHost = localhost
+ServerPort = 9000
+Community = moos_experiments
+
+ProcessConfig = ANTLER
+{
+  # Since the nodes do almost no work, they all run at exactly
+  # their tick interval, so the pipeline's total delay depends
+  # on how far apart the ticks are from each other.
+  MSBetweenLaunches = 550
+
+  Run = MOOSDB @NewConsole = true
+  Run = source_node @NewConsole = true
+  Run = relay_node @NewConsole = true ~ relay1
+  Run = relay_node @NewConsole = false ~ relay2
+  Run = relay_node @NewConsole = false ~ relay3
+  Run = sink_node @NewConsole = true
+  Run = uXMS @ NewConsole = true
+}
+
+ProcessConfig = source_node
+{
+  AppTick = 1
+  CommsTick = 1
+
+  output_variable = VAR_1
+}
+
+ProcessConfig = relay1
+{
+  AppTick = 1
+  CommsTick = 1
+
+  input_variable = VAR_1
+  output_variable = VAR_2
+}
+
+ProcessConfig = relay2
+{
+  AppTick = 1
+  CommsTick = 1
+
+  input_variable = VAR_2
+  output_variable = VAR_3
+}
+
+ProcessConfig = relay3
+{
+  AppTick = 1
+  CommsTick = 1
+
+  input_variable = VAR_3
+  output_variable = VAR_4
+}
+
+ProcessConfig = sink_node
+{
+  AppTick = 10
+  CommsTick = 10
+  input_variable = VAR_4
+}
+
+ProcessConfig = uXMS
+{
+  AppTick = 10
+  CommsTick = 10
+
+  refresh_mode = Streaming
+  display_source = true
+  display_time = true
+  display_community = true
+
+  var = VAR_1
+  var = VAR_2
+  var = VAR_3
+  var = VAR_4
+}

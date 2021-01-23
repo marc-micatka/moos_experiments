@@ -1,0 +1,56 @@
+ServerHost = localhost
+ServerPort = 9000
+Community = moos_experiments
+
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB @NewConsole = true
+  Run = talker_classic @NewConsole = true
+  Run = listener_classic @NewConsole = true
+  Run = uXMS @ NewConsole = true
+}
+
+ProcessConfig = talker_classic
+{
+  AppTick = 1
+  CommsTick = 10
+
+  x_variable = TALKER_X
+  y_variable = TALKER_Y
+  z_variable = TALKER_Z
+}
+
+ProcessConfig = listener_classic
+{
+  AppTick = 1
+  CommsTick = 10
+
+  x_variable = TALKER_X
+  y_variable = TALKER_Y
+  z_variable = TALKER_Z
+  output_x_variable = OUTPUT_X
+  output_y_variable = OUTPUT_Y
+  output_z_variable = OUTPUT_Z
+}
+
+ProcessConfig = uXMS
+{
+  AppTick = 4
+  CommsTick = 4
+
+  refresh_mode = Streaming
+  display_source = true
+  display_time = true
+  display_community = true
+
+  var = TALKER_X
+  var = TALKER_Y
+  var = TALKER_Z
+  var = OUTPUT_X
+  var = OUTPUT_Y
+  var = OUTPUT_Z
+}
+
+

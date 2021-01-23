@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+/*
+Meant for testing echoing messages on the terminal.
+(Didn't include _all_ datatypes, but a representative sample)
+*/
+message KitchenSink {
+  double timestamp = 1;
+  int32 seq = 2;
+  bool active = 3;
+  string name = 4;
+  repeated double values = 5;
+  // Point3 origin = 6;
+}
+
+message Point3 {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+}
