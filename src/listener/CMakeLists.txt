@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10.2)
 project(listener)
 
 find_package(MOOS 10 REQUIRED)
-find_package(Boost 1.71 REQUIRED)
+find_package(Boost 1.65 REQUIRED)
 
 add_executable(listener_classic
   src/listener_classic_main.cpp
