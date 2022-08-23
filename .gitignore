@@ -2,3 +2,6 @@
 bin
 build
 devel
+DockerTest_*
+.gitignore
+.LastOpenedMOOSLogDirectory

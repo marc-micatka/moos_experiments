@@ -19,6 +19,18 @@ I created these stubs to test some open questions about how best to implement MO
 Start by reading section 3 of the MOOS overview:
 https://oceanai.mit.edu/ivpman/pmwiki/pmwiki.php?n=Helm.MOOSOverview
 
+### MOOS Installation 
+
+Clone MOOS:
+
+```
+wget -r -np https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-19.8.2/
+
+sudo apt-get update
+
+sudo apt-get install g++ subversion xterm cmake libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev libtiff5-dev
+```
+
 #### Install MOOS
 I cloned MOOS from:
 https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-19.8.1
