@@ -24,29 +24,40 @@ I cloned MOOS from:
 https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-19.8.1
 and then followed the install instructions.
 
-For it to be in my path, I added a line to my `~/.bashrc`:
-~~~
-export PATH=${PATH}:~/moos-ivp/bin
-~~~
+If you're not able to clone the package, you might first have to Modify ~/.subversion/servers to add under [global]
 
+http-proxy-host = your.proxy.host
+http-proxy-port = your.proxy.port
+http-proxy-compression = no
+
+
+```bash
+$ sudo apt install subversion build-essential cmake xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev libtiff5-dev
+
+$ svn co https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-19.8.1 moos-ivp
+$ cd moos-ivp
+$ ./build-moos.sh
+$ ./build-ivp.sh
+
+//Add MOOS to your path:
+$ echo "PATH=${PATH}:~/moos-ivp/bin" >> ~/.bashrc
+$ source ~/.bashrc
+```
 #### Install protobuf
 
-TODO: I'd prefer not to install from source, particularly since it takes
-forever to build and the python side was installed from pip. I originally
-did so because I was just following the instructions on Google's page.
-- Is there an apt version that will work?
-- Can we also install the python parts from apt?
+Should be able to install protobuf and boost from apt:
 
-`git clone https://github.com/protocolbuffers/protobuf.git`
+```
+$ sudo apt update
+ $sudo apt install protobuf-compiler libboost-all-dev
+```
 
-Follow the instructions in src/README.md to install. I went with the default
-locations, and added a line to my `~/.bashrc`:
+Might have to add the path to bashrc:
 
+In ~/.bashrc
 ~~~
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 ~~~
-
-
 
 ## Compile/Run the Examples
 
