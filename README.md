@@ -35,21 +35,28 @@ http-proxy-compression = no
 $ sudo apt install subversion build-essential cmake xterm libfltk1.3-dev freeglut3-dev libpng-dev libjpeg-dev libxft-dev libxinerama-dev libtiff5-dev
 
 $ svn co https://oceanai.mit.edu/svn/moos-ivp-aro/releases/moos-ivp-19.8.1 moos-ivp
-$ cd moos-ivp
-$ ./build-moos.sh
-$ ./build-ivp.sh
+cd moos-ivp
+./build-moos.sh
+./build-ivp.sh
 
-//Add MOOS to your path:
-$ echo "PATH=${PATH}:~/moos-ivp/bin" >> ~/.bashrc
-$ source ~/.bashrc
+//Add MOOS to your path in your bashrc
+echo "PATH=${PATH}:~/moos-ivp/bin" >> ~/.bashrc
+source ~/.bashrc
 ```
+
+If you get cmake errors during building, it might be because you don't have proper build permissions for your root directory. Potentially you can try to just "sudo build" but giving specific permissions should also work. Try:
+
+```bash
+sudo chmod -R a+rwx cmake_directory
+```
+
 #### Install protobuf
 
 Should be able to install protobuf and boost from apt:
 
 ```
-$ sudo apt update
- $sudo apt install protobuf-compiler libboost-all-dev
+sudo apt update
+sudo apt install protobuf-compiler libboost-all-dev
 ```
 
 Might have to add the path to bashrc:
